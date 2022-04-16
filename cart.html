@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+      h1{
+          display: block;
+          /* background-color: black; */
+      }
+      </style>
+</head>
+<body>
+    <div><h1>Cart</h1></div>
+    <div class="container">
+        
+    </div>
+
+    <script>
+        
+        let cartData = JSON.parse(localStorage.getItem("cartData"));
+        let totalPrice = 0;
+        
+      console.log(cartData)
+        cartData.forEach(product => {
+            let productBox = document.createElement("div");
+    
+          let img = document.createElement("img");
+          img.src = product.image_url;
+          let price = document.createElement("p");
+          price.textContent = product.price;
+          let name = document.createElement("p");
+          name.textContent = product.name;
+          let rating = document.createElement("p");
+          rating.textContent = product.rating;
+          
+          totalPrice+= parseInt(product.price.value);
+          console.log(totalPrice)
+    
+        //  console.log(img,name,price,rating)
+          productBox.append(img,name,price,rating);
+          document.querySelector(".container").append(productBox)
+        //   console.log(productBox)
+        });
+
+        function toInt(str){
+
+        }
+          
+       </script>
+</body>
+</html>
